@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 import pages.Home;
@@ -17,8 +18,9 @@ public class Exercise1 {
 	public WebDriver driver;
 	
 	/*
-	 * This test will not actually submit the login page to do this user:
+	 * This test will not actually submit the login page to do this use:
 	 * Login.btn_Login(driver).submit();
+	 * Note you will need to create valid credentials on Ultimate QA
 	 */
 	@Test
 	public void Login(){
@@ -34,7 +36,19 @@ public class Exercise1 {
 		Reporter.log("03. Step Passed: Email was entered correctly");
 		pages.Login.fld_Pwd(driver).sendKeys("testpass123");
 		Reporter.log("04. Step Passed: Password was entered correctly");
-		// Here you would submit the form
+		// Check the remember me radio button
+		pages.Login.cbox_Rmbr(driver).click();
+		Reporter.log("05. Step Passed: Remember me was checked correctly");
+		/* Here you would submit the form
+		pages.Login.btn_Login(driver).submit();
+		Reporter.log("Test Passed: Login was successfully completed");
+		*/
+	}
+	
+	@AfterClass
+	public void end(){
+		// Close browser once all tests are complete.
+		driver.quit();
 	}
 
 }

@@ -29,8 +29,15 @@ public class Login {
 	 //Login Button
 	 public static WebElement btn_Login(WebDriver driver){
 		 
-		    element = driver.findElement(By.className("btn btn-primary btn-block"));
+		    element = driver.findElement(By.id("btn-signin"));
 		    return element;
 	 }
+	 
+	 //Remember Me Radio Button
+		 public static WebElement cbox_Rmbr(WebDriver driver){
+			 
+			    element = driver.findElement(By.id("user_remember_me"));
+			    return element;
+		 }
 
 }
